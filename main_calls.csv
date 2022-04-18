@@ -1,0 +1,641 @@
+static	value
+
+function[0]	
+outlierMax	15.625
+max	10.99152
+q75	10.331111
+median	10.1226935
+q25	9.968218
+min	9.54068
+outlierMin	0.0
+skewness	0.148644366245696
+
+function[1]	
+outlierMax	16.40625
+max	12.985832
+q75	12.444026
+median	11.949602
+q25	11.7581375
+min	11.292667
+outlierMin	0.390625
+skewness	0.441703717149362
+
+function[2]	
+outlierMax	2.34375
+max	10.778413
+q75	9.685494
+median	9.30052
+q25	9.0907175
+min	8.789738
+outlierMin	0.0
+skewness	0.294516511664473
+
+function[3]	
+outlierMax	4.6875
+max	12.990738
+q75	11.815756
+median	11.420811
+q25	11.175853
+min	10.749875
+outlierMin	0.390625
+skewness	0.234390212266546
+
+function[4]	
+outlierMax	11.71875
+max	12.98052
+q75	12.228165
+median	11.7691735
+q25	11.5315
+min	11.10664
+outlierMin	0.0
+skewness	0.317682099717936
+
+function[5]	
+outlierMax	10.15625
+max	12.988774
+q75	12.200738
+median	11.7512155
+q25	11.511798
+min	11.107311
+outlierMin	0.0
+skewness	0.304968502336921
+
+function[6]	
+outlierMax	14.0625
+max	12.9966
+q75	12.436635
+median	11.9828425
+q25	11.7714155
+min	11.349143
+outlierMin	0.0
+skewness	0.364339139186386
+
+function[7]	
+outlierMax	2.34375
+max	13.835666
+q75	12.476569
+median	11.9857
+q25	11.7262885
+min	11.191702
+outlierMin	0.0
+skewness	0.308494623010996
+
+function[8]	
+outlierMax	15.234375
+max	12.985694
+q75	12.412729
+median	11.95094
+q25	11.7353
+min	11.408493
+outlierMin	0.0
+skewness	0.363357636003186
+
+function[9]	
+outlierMax	3.515625
+max	13.835511
+q75	12.436422
+median	11.968542
+q25	11.723493
+min	11.305894
+outlierMin	0.0
+skewness	0.312557070900467
+
+function[10]	
+outlierMax	2.734375
+max	13.940782
+q75	12.43128
+median	11.890393
+q25	11.6954005
+min	11.396084
+outlierMin	0.0
+skewness	0.47004230991623
+
+function[11]	
+outlierMax	15.234375
+max	12.989858
+q75	12.40552
+median	11.943658
+q25	11.7214555
+min	11.351983
+outlierMin	0.0
+skewness	0.350346348918856
+
+function[12]	
+outlierMax	14.84375
+max	12.964054
+q75	12.311742
+median	11.927996
+q25	11.731586
+min	11.376018
+outlierMin	0.0
+skewness	0.322906252800974
+
+function[13]	
+outlierMax	3.90625
+max	13.811827
+q75	12.482635
+median	11.9993715
+q25	11.7273625
+min	11.313027
+outlierMin	0.0
+skewness	0.27970633115862
+
+function[14]	
+outlierMax	2.734375
+max	13.946405
+q75	12.476964
+median	12.02132
+q25	11.7715625
+min	11.405511
+outlierMin	0.0
+skewness	0.291871366874045
+
+function[15]	
+outlierMax	16.40625
+max	12.942177
+q75	12.29196
+median	11.9258425
+q25	11.738438
+min	11.400156
+outlierMin	0.0
+skewness	0.322865215836044
+
+function[16]	
+outlierMax	13.671875
+max	12.992214
+q75	12.388644
+median	11.911838
+q25	11.73114
+min	11.323223
+outlierMin	0.0
+skewness	0.450351632841778
+
+function[17]	
+outlierMax	16.40625
+max	12.95092
+q75	12.35108
+median	11.9271595
+q25	11.730191
+min	11.428094
+outlierMin	0.0
+skewness	0.365527493642182
+
+function[18]	
+outlierMax	13.28125
+max	12.999858
+q75	12.343182
+median	11.9401845
+q25	11.7349395
+min	11.339951
+outlierMin	0.0
+skewness	0.325121148226241
+
+function[19]	
+outlierMax	14.453125
+max	12.995462
+q75	12.388178
+median	11.9107575
+q25	11.7138755
+min	11.306
+outlierMin	0.0
+skewness	0.416042503179215
+
+function[20]	
+outlierMax	14.453125
+max	12.981885
+q75	12.388453
+median	11.933076
+q25	11.742091
+min	11.217422
+outlierMin	0.0
+skewness	0.409046323886615
+
+function[21]	
+outlierMax	12.5
+max	12.98604
+q75	12.349377
+median	11.8993665
+q25	11.6778445
+min	11.332986
+outlierMin	0.0
+skewness	0.340249355020048
+
+function[22]	
+outlierMax	13.28125
+max	12.999129
+q75	12.323618
+median	11.911244
+q25	11.6834065
+min	11.308787
+outlierMin	0.0
+skewness	0.288243025937523
+
+function[23]	
+outlierMax	11.71875
+max	12.988667
+q75	12.365774
+median	11.8617445
+q25	11.6530045
+min	11.259654
+outlierMin	0.0
+skewness	0.414284702137225
+
+function[24]	
+outlierMax	10.15625
+max	11.982036
+q75	11.200386
+median	10.8045155
+q25	10.544555
+min	10.247289
+outlierMin	0.0
+skewness	0.207233265887089
+
+function[25]	
+outlierMax	15.625
+max	12.983116
+q75	12.363413
+median	11.9270045
+q25	11.715167
+min	11.269502
+outlierMin	0.0
+skewness	0.346428670597281
+
+function[26]	
+outlierMax	12.890625
+max	12.998449
+q75	12.373556
+median	11.9335825
+q25	11.7250335
+min	11.292622
+outlierMin	0.0
+skewness	0.356848837164482
+
+function[27]	
+outlierMax	14.0625
+max	12.997675
+q75	12.375769
+median	11.8934175
+q25	11.6717735
+min	11.306094
+outlierMin	0.0
+skewness	0.37032552054665
+
+function[28]	
+outlierMax	1.953125
+max	13.998871
+q75	12.389436
+median	11.851242
+q25	11.646222
+min	11.14852
+outlierMin	0.0
+skewness	0.448288110826766
+
+function[29]	
+outlierMax	5.859375
+max	12.939155
+q75	11.960116
+median	11.489553
+q25	11.2913025
+min	10.961783
+outlierMin	0.0
+skewness	0.407157600736227
+
+function[30]	
+outlierMax	1.953125
+max	13.905351
+q75	12.4202
+median	11.9803315
+q25	11.6941735
+min	11.374458
+outlierMin	0.0
+skewness	0.211714723911591
+
+function[31]	
+outlierMax	0.78125
+max	15.711116
+q75	13.72116
+median	12.111318
+q25	11.714087
+min	11.214053
+outlierMin	0.0
+skewness	0.604168856837791
+
+function[32]	
+outlierMax	0.78125
+max	14.381107
+q75	11.576365
+median	10.5109695
+q25	9.224378
+min	8.804151
+outlierMin	0.0
+skewness	-0.0940464381818448
+
+function[33]	
+outlierMax	0.78125
+max	14.381107
+q75	11.576365
+median	10.5109695
+q25	9.224378
+min	8.804151
+outlierMin	0.0
+skewness	-0.0940464381818448
+
+function[34]	
+outlierMax	7.8125
+max	14.908751
+q75	13.473685
+median	12.4952995
+q25	12.198471
+min	11.656187
+outlierMin	0.0
+skewness	0.534464803554542
+
+function[35]	
+outlierMax	9.765625
+max	13.973036
+q75	12.956054
+median	12.4223285
+q25	12.1625245
+min	11.793173
+outlierMin	0.0
+skewness	0.345193845975481
+
+function[36]	
+outlierMax	6.640625
+max	13.994022
+q75	13.021907
+median	12.3964715
+q25	12.17548
+min	11.667876
+outlierMin	0.0
+skewness	0.477825022122401
+
+function[37]	
+outlierMax	5.078125
+max	13.979178
+q75	12.936609
+median	12.380529
+q25	12.131384
+min	11.700284
+outlierMin	0.0
+skewness	0.381179173522932
+
+function[38]	
+outlierMax	2.34375
+max	15.951178
+q75	13.80148
+median	12.539702
+q25	12.176244
+min	11.707653
+outlierMin	0.0
+skewness	0.552732033993834
+
+function[39]	
+outlierMax	5.46875
+max	14.98912
+q75	13.355609
+median	12.5168955
+q25	12.181042
+min	11.853547
+outlierMin	0.0
+skewness	0.428123725594197
+
+function[40]	
+outlierMax	7.8125
+max	14.978373
+q75	13.493986
+median	12.4413415
+q25	12.2448005
+min	11.737857
+outlierMin	0.0
+skewness	0.685329360611375
+
+function[41]	
+outlierMax	7.8125
+max	14.978373
+q75	13.493986
+median	12.4413415
+q25	12.2448005
+min	11.737857
+outlierMin	0.0
+skewness	0.685329360611375
+
+function[42]	
+outlierMax	3.515625
+max	10.984911
+q75	9.761231
+median	9.3071085
+q25	9.1018775
+min	8.768782
+outlierMin	0.0
+skewness	0.377478090280863
+
+function[43]	
+outlierMax	2.34375
+max	10.972306
+q75	9.73824
+median	9.301811
+q25	9.0943425
+min	8.76472
+outlierMin	0.0
+skewness	0.35558532219802
+
+function[44]	
+outlierMax	3.515625
+max	10.910226
+q75	9.723004
+median	9.2979685
+q25	9.07642
+min	8.758214
+outlierMin	0.0
+skewness	0.314710849634385
+
+function[45]	
+outlierMax	3.515625
+max	10.959952
+q75	9.684369
+median	9.278911
+q25	9.042033
+min	8.705667
+outlierMin	0.0
+skewness	0.262448313655156
+
+function[46]	
+outlierMax	2.734375
+max	10.971147
+q75	9.674827
+median	9.281078
+q25	9.071691
+min	8.695338
+outlierMin	0.0
+skewness	0.305672352504244
+
+function[47]	
+outlierMax	1.953125
+max	10.85744
+q75	9.679036
+median	9.310749
+q25	9.080713
+min	8.748378
+outlierMin	0.0
+skewness	0.231064157653971
+
+function[48]	
+outlierMax	0.78125
+max	12.62268
+q75	11.197432
+median	9.5939915
+q25	9.161011
+min	8.7654
+outlierMin	0.0
+skewness	0.574763273409574
+
+function[49]	
+outlierMax	0.78125
+max	12.937173
+q75	12.003663
+median	11.6578175
+q25	11.4239975
+min	11.000342
+outlierMin	5.46875
+skewness	0.193258870848794
+
+function[50]	
+outlierMax	0.78125
+max	12.487844
+q75	11.251871
+median	9.5372975
+q25	9.1301975
+min	8.815315
+outlierMin	0.0
+skewness	0.616246326307981
+
+function[51]	
+outlierMax	0.78125
+max	12.884
+q75	11.622866
+median	10.4727025
+q25	9.2285905
+min	8.828551
+outlierMin	0.0
+skewness	-0.0392388010485858
+
+function[52]	
+outlierMax	0.78125
+max	12.891768
+q75	11.982515
+median	11.697213
+q25	11.411229
+min	11.002204
+outlierMin	5.859375
+skewness	-0.00119379785256629
+
+function[53]	
+outlierMax	0.78125
+max	16.301093
+q75	14.780836
+median	12.2142285
+q25	11.8290335
+min	9.761818
+outlierMin	0.0
+skewness	0.739010316577752
+
+function[54]	
+outlierMax	1.953125
+max	13.955951
+q75	12.449893
+median	11.956289
+q25	11.7312895
+min	11.325943
+outlierMin	0.0
+skewness	0.37378679619567
+
+function[55]	
+outlierMax	14.0625
+max	12.998742
+q75	12.399587
+median	11.965573
+q25	11.7317445
+min	11.374356
+outlierMin	0.0
+skewness	0.299749566701735
+
+function[56]	
+outlierMax	14.0625
+max	12.987964
+q75	12.432404
+median	11.9637935
+q25	11.7277705
+min	11.384342
+outlierMin	0.0
+skewness	0.330082943828247
+
+function[57]	
+outlierMax	17.578125
+max	12.993764
+q75	12.413574
+median	12.001711
+q25	11.756602
+min	11.354653
+outlierMin	0.0
+skewness	0.253822080697505
+
+function[58]	
+outlierMax	16.40625
+max	12.939262
+q75	12.430787
+median	12.0110045
+q25	11.761651
+min	11.364933
+outlierMin	0.0
+skewness	0.254700090863445
+
+function[59]	
+outlierMax	2.34375
+max	13.930849
+q75	12.473316
+median	11.9200755
+q25	11.7513025
+min	11.377991
+outlierMin	0.0
+skewness	0.532493506007856
+
+function[60]	
+outlierMax	0.78125
+max	15.953791
+q75	14.825644
+median	12.72178
+q25	11.8553375
+min	11.45164
+outlierMin	0.0
+skewness	0.41659724341579
+
+function[61]	
+outlierMax	0.78125
+max	16.89852
+q75	14.965693
+median	13.2119375
+q25	12.244471
+min	11.561405
+outlierMin	0.0
+skewness	0.288947024535301
+
+function[62]	
+outlierMax	1.953125
+max	15.950316
+q75	13.82932
+median	12.5847665
+q25	12.185616
+min	11.545347
+outlierMin	0.0
+skewness	0.514328005528975
+
+function[63]	
+outlierMax	15.234375
+max	12.978658
+q75	12.401849
+median	11.966222
+q25	11.7491265
+min	11.409783
+outlierMin	0.0
+skewness	0.334800010724313
