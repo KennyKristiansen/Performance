@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1117</width>
-    <height>826</height>
+    <width>1107</width>
+    <height>827</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,92 +20,16 @@
    <string>Performance test</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="formLayoutWidget_2">
+   <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>2113</width>
-      <height>1530</height>
+      <width>1103</width>
+      <height>926</height>
      </rect>
     </property>
-    <layout class="QFormLayout" name="formLayout_2">
-     <property name="fieldGrowthPolicy">
-      <enum>QFormLayout::ExpandingFieldsGrow</enum>
-     </property>
-     <property name="rowWrapPolicy">
-      <enum>QFormLayout::WrapLongRows</enum>
-     </property>
-     <property name="leftMargin">
-      <number>6</number>
-     </property>
-     <property name="topMargin">
-      <number>6</number>
-     </property>
-     <property name="rightMargin">
-      <number>6</number>
-     </property>
-     <property name="bottomMargin">
-      <number>6</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_7">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>100</horstretch>
-         <verstretch>100</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>1000</width>
-         <height>250</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>1000</width>
-         <height>250</height>
-        </size>
-       </property>
-       <property name="sizeIncrement">
-        <size>
-         <width>10</width>
-         <height>5</height>
-        </size>
-       </property>
-       <property name="baseSize">
-        <size>
-         <width>500</width>
-         <height>250</height>
-        </size>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap>performance.png</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-       <property name="wordWrap">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
+    <layout class="QFormLayout" name="formLayout">
      <item row="0" column="1">
       <layout class="QVBoxLayout" name="verticalLayout_13">
        <property name="sizeConstraint">
@@ -198,7 +122,7 @@
       </layout>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="label_8">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>100</horstretch>
@@ -256,7 +180,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <layout class="QVBoxLayout" name="verticalLayout_12">
+      <layout class="QVBoxLayout" name="verticalLayout_14">
        <property name="sizeConstraint">
         <enum>QLayout::SetMinimumSize</enum>
        </property>
@@ -273,7 +197,7 @@
         <number>10</number>
        </property>
        <item>
-        <widget class="QComboBox" name="comboBox_6">
+        <widget class="QComboBox" name="comboBox_8">
          <property name="maxVisibleItems">
           <number>2</number>
          </property>
@@ -293,7 +217,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_41">
+        <widget class="QPushButton" name="pushButton_49">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -306,7 +230,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_42">
+        <widget class="QPushButton" name="pushButton_50">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -319,7 +243,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_43">
+        <widget class="QPushButton" name="pushButton_51">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -332,7 +256,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_44">
+        <widget class="QPushButton" name="pushButton_52">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -347,7 +271,7 @@
       </layout>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="label_8">
+      <widget class="QLabel" name="label_9">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>100</horstretch>
@@ -393,9 +317,6 @@
        <property name="text">
         <string/>
        </property>
-       <property name="textFormat">
-        <enum>Qt::AutoText</enum>
-       </property>
        <property name="pixmap">
         <pixmap>performance.png</pixmap>
        </property>
@@ -405,13 +326,10 @@
        <property name="wordWrap">
         <bool>false</bool>
        </property>
-       <property name="margin">
-        <number>6</number>
-       </property>
       </widget>
      </item>
      <item row="2" column="1">
-      <layout class="QVBoxLayout" name="verticalLayout_11">
+      <layout class="QVBoxLayout" name="verticalLayout_15">
        <property name="sizeConstraint">
         <enum>QLayout::SetMinimumSize</enum>
        </property>
@@ -428,13 +346,7 @@
         <number>10</number>
        </property>
        <item>
-        <widget class="QComboBox" name="comboBox_5">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+        <widget class="QComboBox" name="comboBox_9">
          <property name="maxVisibleItems">
           <number>2</number>
          </property>
@@ -454,7 +366,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_37">
+        <widget class="QPushButton" name="pushButton_53">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -467,7 +379,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_38">
+        <widget class="QPushButton" name="pushButton_54">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -480,7 +392,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_39">
+        <widget class="QPushButton" name="pushButton_55">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -493,7 +405,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_40">
+        <widget class="QPushButton" name="pushButton_56">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -507,13 +419,65 @@
        </item>
       </layout>
      </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>100</horstretch>
+         <verstretch>100</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>1000</width>
+         <height>250</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>1000</width>
+         <height>250</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>10</width>
+         <height>5</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>500</width>
+         <height>250</height>
+        </size>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>performance.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
-    <zorder>layoutWidget</zorder>
-    <zorder>layoutWidget_2</zorder>
-    <zorder>label_7</zorder>
-    <zorder>label</zorder>
-    <zorder>label_8</zorder>
-    <zorder></zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -533,7 +497,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1117</width>
+     <width>1107</width>
      <height>21</height>
     </rect>
    </property>

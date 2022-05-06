@@ -46,7 +46,7 @@ def extract(filename):
     functionValues = {}
     for function in range(0, 64):
         client.db_write(3, 2060, function.to_bytes(2, 'big'))
-        time.sleep(0.1)
+        time.sleep(0.01)
         datapoints = []
         print(f'Extracting {function} out of {63}', end='\r')
         
@@ -63,4 +63,4 @@ def extract(filename):
 
 startTest()
 
-extract(filename='changed')
+extract(filename='changed_conveyor')
