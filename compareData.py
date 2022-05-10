@@ -1,10 +1,10 @@
 """class creation"""
+
 import json
 
 import matplotlib.cbook as cbook
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
-from numpy import diff
 
 
 class BoxPlot:
