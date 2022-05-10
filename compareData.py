@@ -1,10 +1,7 @@
 """class creation"""
 import json
 
-import matplotlib.cbook as cbook
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
-from numpy import diff
 
 
 class BoxPlot:
@@ -168,26 +165,28 @@ class StemPlot:
             labelPercentage = tuple(labelPercentage)
 
             # define plotspecific layout functions
-            plt.margins(x=0.008, y=0.1)
             plt.xticks(range(0, len(labels)), labelPercentage)
             plt.grid(True, which="both", axis="x", linewidth=0.5, linestyle="--")
             plt.grid(True, which="both", axis="y", linewidth=1, linestyle="--")
+
+            # labeling
             plt.ylabel("Cycle time [ms]")
             plt.xlabel("Function and percentage timereduction")
             plt.legend(["baseline"], loc="best")
+            # formatting
+            plt.margins(x=0.008, y=0.1)
             fig1.autofmt_xdate()
             plt.tight_layout(pad=1, w_pad=1, h_pad=2)
             plt.show()
 
 
-class comparison:
-    def __init__(self, dataset1: list, dataset2: list) -> None:
-        self.dataset1 = dataset1
-        self.dataset2 = dataset2
+class compare:
+    def __init__(self, dataset1: list, dataset2: list) -> list:
+        self.compare(dataset1, dataset2)
 
-    def compare(self):
+    def compare(dataset_1, dataset_2):
         difference = []
-        difference.append([y - x for (x, y) in zip(self.dataset1[0], self.dataset2[0])])
+        difference.append([y - x for (x, y) in zip(dataset_1[0], dataset_2[0])])
         return difference
 
 
@@ -226,8 +225,7 @@ if __name__ == "__main__":
     labels1 = boxplot1.labels
     medians1 = boxplot1.medians
 
-    compare = comparison(medians, medians1)
-    comparedData = compare.compare()
+    comparedData = compare(medians, medians1)
 
     stemplot = StemPlot()
     stemplot.plot(labels, comparedData)
