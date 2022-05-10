@@ -1,6 +1,7 @@
 """class creation"""
 
 import json
+
 import matplotlib.pyplot as plt
 
 
@@ -22,95 +23,30 @@ class BoxPlot:
         self.subPlotKwargs["figsize"] = (15, 5)
 
         # Optional definitions
-
         self.medians: list = []
         self.labels: list = []
         self.ax1 = plt.axis
         self.fig1 = plt.figure
 
-        self.func_description = [
-            "None",  # 0
-            "A(int) --> B",  # 1
-            "A --> B",  # 2
-            "A --> B(OUT)",  # 3
-            "A-->B(Length)",
-            "A+A-->B",
-            "A",
-            "A(int)-->B(joining)",
-            "A--->B+A-->(B+B)",  # 8
-            "",
-            "A(slat)-->B",
-            "A-->B(A-->pos,pos->B)",
-            "A-->B(A-->B,B>pos,pos->B)",
-            "A-->B(A-->B,centering)",
-            "A--->B(A-->centering-->B)",  # 14
-            "A-->B AGV",
-            "A-->B(AGV)",
-            "A-->B(disjoining,length)",
-            "A-->B(joining)",
-            "",  # 19
-            "",
-            "A-->B(pos,int)()",
-            "Centering",  # 22
-            "Man ctrl 1",
-            "Man ctrl 2",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-        ]
-
+        # load labels from json file
+        with open("labels.json", "r") as data:
+            self.func_description = json.load(data)
         self.__parsedata__()
 
     def __parsedata__(self):
+        '''parse through data and extracts label and datapoint lists'''
         for data in self.data:
             self.fig1, self.ax1 = plt.subplots(**self.subPlotKwargs)
             self.labels, self.dataPoints = [*zip(*data[0].items())]
+            self.boxplot = plt.boxplot(self.dataPoints, **self.plotKwargs)
 
     def plot(self) -> None:
 
-        self.boxplot = plt.boxplot(self.dataPoints, **self.plotKwargs)
-
-        labelCommented = []
-        for i in range(len(self.labels)):
-            labelCommented.append(self.labels[i] + ". " + self.func_description[i])
-        labelCommented = tuple(labelCommented)
-        plt.xticks(range(1, len(self.labels) + 1), labelCommented)
+        commentedLabels :list = []
+        for i, _ in enumerate(self.labels):
+            commentedLabels.append(self.labels[i] + ". " + self.func_description[i])
+        commentedLabels = tuple(commentedLabels)
+        plt.xticks(range(1, len(self.labels) + 1), labels=commentedLabels)
 
         # create list of median values
         median: list = []
@@ -118,17 +54,18 @@ class BoxPlot:
             # get position data for median line
             x, y = line.get_xydata()[1]
             plt.text(
-                x - 0.75, y, "%.2f" % y, verticalalignment="center", fontsize=7
+                x - 0.75, y, "%.2f" % y, verticalalignment="center", fontsize=6
             )  # plot median information text onto plot
             # overlay median value
             median.append(float(y))
         self.medians.append(median)
-        self.fig1.autofmt_xdate()
 
         plt.grid(True, which="both", axis="x", linewidth=1, linestyle="--")
         plt.ylabel("Cycle time [ms]")
         plt.xlabel("Function")
         plt.title("Scantime for 10 x functioncall")
+        self.fig1.autofmt_xdate()
+
         plt.show()
 
 
@@ -225,7 +162,7 @@ if __name__ == "__main__":
     labels1 = boxplot1.labels
     medians1 = boxplot1.medians
 
-    comparedData = compare(medians, medians1)
+    comparedData = compare.compare(medians, medians1)
 
     stemplot = StemPlot()
     stemplot.plot(labels, comparedData)
