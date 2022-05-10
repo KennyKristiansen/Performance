@@ -1,5 +1,6 @@
 """class creation"""
 
+import enum
 import json
 
 import matplotlib.pyplot as plt
@@ -34,21 +35,14 @@ class BoxPlot:
         self.__parsedata__()
 
     def __parsedata__(self):
-        '''parse through data and extracts label and datapoint lists'''
+        """parse through data and extracts label and datapoint lists"""
         for data in self.data:
             self.fig1, self.ax1 = plt.subplots(**self.subPlotKwargs)
             self.labels, self.dataPoints = [*zip(*data[0].items())]
             self.boxplot = plt.boxplot(self.dataPoints, **self.plotKwargs)
 
-    def plot(self) -> None:
-
-        commentedLabels :list = []
-        for i, _ in enumerate(self.labels):
-            commentedLabels.append(self.labels[i] + ". " + self.func_description[i])
-        commentedLabels = tuple(commentedLabels)
-        plt.xticks(range(1, len(self.labels) + 1), labels=commentedLabels)
-
-        # create list of median values
+    def getmedians(self):
+        """create list of median values from boxplot"""
         median: list = []
         for line in self.boxplot["medians"]:
             # get position data for median line
@@ -60,6 +54,19 @@ class BoxPlot:
             median.append(float(y))
         self.medians.append(median)
 
+    def editlabels(self):
+        commentedLabels: list = []
+        for i, _ in enumerate(self.labels):
+            commentedLabels.append(self.labels[i] + ". " + self.func_description[i])
+        commentedLabels = tuple(commentedLabels)
+        plt.xticks(range(1, len(self.labels) + 1), labels=commentedLabels)
+
+    def plot(self) -> None:
+        """control plot config flow"""
+        self.getmedians()
+        self.editlabels()
+
+        # define plot
         plt.grid(True, which="both", axis="x", linewidth=1, linestyle="--")
         plt.ylabel("Cycle time [ms]")
         plt.xlabel("Function")
@@ -84,6 +91,18 @@ class StemPlot:
         self.subPlotKwargs["sharex"] = True
         self.subPlotKwargs["figsize"] = (15, 5)
 
+    def infolabel(self, points, labels):
+        baselinePoint = points[0]
+        labelPercentage = []
+
+        for i, label in enumerate(labels):
+            datapoint = float(points[i])
+            percentage = f"{(((datapoint/baselinePoint) * 100) - 100):.1f}"
+            difference = f"{(datapoint - baselinePoint):.2f}"
+            labelPercentage.append(f"{label} = {difference}")
+        labelPercentage = tuple(labelPercentage)
+        return labelPercentage
+
     def plot(self, labels, data) -> None:
         for points in data:
             fig1, ax1 = plt.subplots(**self.subPlotKwargs)
@@ -91,15 +110,7 @@ class StemPlot:
             self.plotKwargs["bottom"] = points[0]
             markerline, stemlines, baseline = plt.stem(points, **self.plotKwargs)
 
-            # calculate performanceboost for labeling
-            labelPercentage = []
-            baselinePoint = points[0]
-            for i in range(len(labels)):
-                datapoint = points[i]
-                percentage = f"{(((datapoint/baselinePoint) * 100) - 100):.1f}"
-                difference = f"{(datapoint - baselinePoint):.2f}"
-                labelPercentage.append(f"{labels[i]} = {difference}")
-            labelPercentage = tuple(labelPercentage)
+            labelPercentage = self.infolabel(points, labels)
 
             # define plotspecific layout functions
             plt.xticks(range(0, len(labels)), labelPercentage)
@@ -110,6 +121,7 @@ class StemPlot:
             plt.ylabel("Cycle time [ms]")
             plt.xlabel("Function and percentage timereduction")
             plt.legend(["baseline"], loc="best")
+
             # formatting
             plt.margins(x=0.008, y=0.1)
             fig1.autofmt_xdate()
@@ -117,7 +129,7 @@ class StemPlot:
             plt.show()
 
 
-class compare:
+class Compare:
     def __init__(self, dataset1: list, dataset2: list) -> list:
         self.compare(dataset1, dataset2)
 
@@ -162,7 +174,7 @@ if __name__ == "__main__":
     labels1 = boxplot1.labels
     medians1 = boxplot1.medians
 
-    comparedData = compare.compare(medians, medians1)
+    comparedData = Compare.compare(medians, medians1)
 
     stemplot = StemPlot()
     stemplot.plot(labels, comparedData)
