@@ -1,12 +1,7 @@
 """class creation"""
 
 import json
-
 import matplotlib.pyplot as plt
-<<<<<<< HEAD
-=======
-from matplotlib.ticker import MultipleLocator
->>>>>>> 6efcaf789648fd2dfb8114f627daabe2d20e0d31
 
 
 class BoxPlot:
