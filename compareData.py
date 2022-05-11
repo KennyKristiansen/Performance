@@ -15,7 +15,7 @@ class BoxPlot:
         self.plotKwargs = {}
         self.plotKwargs["meanline"] = True
         self.plotKwargs["showmeans"] = True
-        self.plotKwargs["bootstrap"] = 5000
+        self.plotKwargs["bootstrap"] = 10000
         self.plotKwargs["widths"] = 0.75
         self.plotKwargs["vert"] = True  # default = True
 
