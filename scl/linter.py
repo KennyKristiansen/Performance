@@ -31,8 +31,10 @@ class scl_linter():
             if val == 'OR':
                 newlineInserts.append(i)
                 newlineInserts.append(i+1)
+            if val == 'END_REGION':
+                newlineInserts.append(i+1)
             if val == ';':
-                newlineInserts.append(i)
+                newlineInserts.append(i+1)
         inserts = 0
         print(newlineInserts)
         for i in newlineInserts:
@@ -53,7 +55,7 @@ class escapeCharacters():
         self.tab = '\t'
 
 if __name__=='__main__':
-    #lint = scl_linter(pyperclip.paste())
-    lint = scl_linter(testText)
+    lint = scl_linter(pyperclip.paste())
+    #lint = scl_linter(testText)
     lint.paste()
     

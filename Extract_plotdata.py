@@ -15,8 +15,6 @@ connectionStatus = client.get_connected()
 print(f"Connected: {connectionStatus}")
 
 # Start new test
-
-
 def startTest():
     startTime = time.time()
     expectedCycleTime_ms = 2
