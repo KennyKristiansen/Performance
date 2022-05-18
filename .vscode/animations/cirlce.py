@@ -8,29 +8,28 @@ ax = fig.add_subplot(projection='3d')
 
 def gen(n):
     phi = 0
-    fullCircle = 2*np.pi
+    fullCircle = np.radians(360)
     startHeight = 10
-    angle = 0.251
-    z = 0 + startHeight
+    downPerRevolution = 2
+    z = startHeight
     rotations = 0
-    rotation = False
-    i = 0
-    while phi < 10*fullCircle:
-        i += 1
-        print(np.cos(fullCircle/n)*i )
-        #X Y Z
-        if 4 >= rotations >= 2:
-            z += -angle*10*fullCircle/n
+    what = 0
+    endCircleCount = 10 * fullCircle
+    previousZ = 0
+    while phi < endCircleCount:
+        if 7*fullCircle >= phi >= 2*fullCircle:
+            z +=    downPerRevolution*-endCircleCount/(n*fullCircle)
         else:
             z = z
         yield np.array([np.cos(phi), np.sin(phi), z])
-        if (np.cos(fullCircle)*i >= 0.0) == rotation:
-            rotations += 1
-            rotation = True
-        elif (np.cos(phi) <= 0.0) == rotation:
-            rotation = False
 
-        phi += 10*fullCircle/n
+        if phi >= rotations * fullCircle:
+            rotations += 1
+            print(f'Rotation {rotations}: z = {z:.2f}')
+
+        
+        what += (np.cos((10*fullCircle/n)-1))
+        phi += endCircleCount/n
         #print(rotations, z)
         
 
@@ -38,7 +37,7 @@ def update(num, data, line):
     line.set_data(data[:2, :num])
     line.set_3d_properties(data[2, :num])
 
-N = 250
+N = 500
 
 data = np.array(list(gen(N))).T
 line, = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1],color='r')
