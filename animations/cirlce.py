@@ -13,7 +13,7 @@ class ExceptionOutOfRange(BaseException):
         self.base_message = base_message
 
 
-class rotationBasedPattern:
+class wrappingPattern:
     def __init__(self) -> None:
         self.fullCircle = np.radians(360)
         self.start: int = 1
@@ -22,27 +22,27 @@ class rotationBasedPattern:
         self.overlap: float = 1
         self.n: int = 1
         self.PosZ: int = 1
+        self.filmHeight = 0
 
-    def rotationBasedPattern(self, start, stop, overlap):
+    #TODO create more patternchoices, example cm based
+    def rotationBased(self, start, stop, overlap):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
-        overlap = self.scale(overlap, (-100, 100), (0.4, 0.0))
+        self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight*2, 0.0))
         fullCircle = np.radians(360)
         if stop * fullCircle >= self.position >= start * fullCircle:
-            self.PosZ += -overlap * (fullCircle * 10) / (self.n * fullCircle)
-            self.overlap = overlap
+            self.PosZ += -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
         return self.PosZ
 
-    def percentageBasedPattern(self, productHeight, start, stop, overlap):
+    def percentageBased(self, productHeight, start, stop, overlap):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
-        overlap = self.scale(overlap, (-100, 100), (0.4, 0.0))
+        self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight*2, 0.0))
         fullCircle = np.radians(360)
         start = (-productHeight / 100) * start + productHeight
         stop = (-productHeight / 100) * stop + productHeight
         if start >= self.PosZ >= stop:
-            self.PosZ += -overlap * (fullCircle * 10) / (self.n * fullCircle)
-            self.overlap = overlap
+            self.PosZ += -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
         return self.PosZ
 
     def scale(self, val, src, dst):
@@ -54,24 +54,26 @@ class rotationBasedPattern:
 
 def gen(n):
     fullCircle = np.radians(360)
-    startHeight = 2
-    PosZ = startHeight
+    productHeight = 5
+    PosZ = productHeight
     rotations = 0
     endCircleCount = 10 * fullCircle
-    filmHeight = 0.2
+    filmHeight = 0.5
 
-    pattern = rotationBasedPattern()
+    pattern = wrappingPattern()
     pattern.n = n
-    pattern.PosZ = startHeight
+    pattern.PosZ = productHeight
+    pattern.filmHeight = filmHeight
 
+    #TODO choose between rotation based or height based.
     while pattern.position < endCircleCount:
+        #TODO make sure only one pattern is active at a time.
+        PosZ = pattern.rotationBased(start=0, stop=1, overlap=100)
+        PosZ = pattern.rotationBased(2, 4, -100)
+        PosZ = pattern.percentageBased(productHeight, 35, 100, -100)
 
-        PosZ = pattern.rotationBasedPattern(start=0, stop=1, overlap=100)
-        PosZ = pattern.rotationBasedPattern(2, 4, -100)
-        PosZ = pattern.percentageBasedPattern(startHeight, 35, 100, -100)
-
-        if not PosZ > 0:
-            PosZ = 0
+        if not PosZ > 0 + filmHeight:
+            PosZ = 0 + filmHeight
         PosX = np.cos(pattern.position)
         PosY = np.sin(pattern.position)
         yield np.array([PosX, PosY, PosZ])
@@ -103,7 +105,7 @@ ax.set_xlabel("X")
 ax.set_ylim3d([-2.0, 2.0])
 ax.set_ylabel("Y")
 
-ax.set_zlim3d([0.0, 2.0])
+ax.set_zlim3d([0.0, 5.0])
 ax.set_zlabel("Z")
 
 ani = animation.FuncAnimation(
