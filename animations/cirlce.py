@@ -14,21 +14,22 @@ class ExceptionOutOfRange(BaseException):
 
 class wrappingPattern:
     def __init__(self) -> None:
-        self.position: int = 1
-        self.overlap: float = 1
-        self.n: int = 1
-        self.PosZ: int = 1
+        self.position: int = 0
+        self.overlap: float = 0
+        self.n: int = 0
+        self.PosZAdjustment: int = 0
+        self.PosZ = 0
         self.filmHeight = 0
 
     # TODO create more pattern choices, example cm based
-    def rotationBased(self, start, stop, overlap):
+    def rotationBased(self, startRotation, stopRotation, overlap):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
         self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight * 2, 0.0))
         fullCircle = np.radians(360)
-        if stop * fullCircle >= self.position >= start * fullCircle:
-            self.PosZ += -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
-        return self.PosZ
+        if stopRotation * fullCircle >= self.position >= startRotation * fullCircle:
+            self.PosZAdjustment = -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
+            return(True)
 
     def percentageBased(self, productHeight, start, stop, overlap):
         if overlap not in range(-101, 101):
@@ -37,13 +38,26 @@ class wrappingPattern:
         fullCircle = np.radians(360)
         start = self.scale(start, (0, 100), (productHeight, 0.0))
         stop = self.scale(stop, (0, 100), (productHeight, 0.0))
-
         # start = (-productHeight / 100) * start + productHeight
         # stop = (-productHeight / 100) * stop + productHeight
         FloatCompensation = 0.0001
-        if start + FloatCompensation >= self.PosZ >= stop:
-            self.PosZ += -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
-        return self.PosZ
+        if start + FloatCompensation >= self.position >= stop:
+            print(f' {start =} {self.position=} {stop =}')
+            self.PosZAdjustment = -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
+            return(True)
+
+
+    #TODO wrongly implemented, does not account for product height
+    def measurementBased(self, productHeight, start, stop, overlap):
+        if overlap not in range(-101, 101):
+            raise ExceptionOutOfRange("Overlap out of range.")
+        self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight * 2, 0.0))
+        fullCircle = np.radians(360)
+
+        if start  >= self.PosZ >= stop:
+            self.PosZAdjustment = -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
+            return(True)
+
 
     def scale(self, val, src, dst):
         """
@@ -62,16 +76,19 @@ def gen(n):
 
     pattern = wrappingPattern()
     pattern.n = n
-    pattern.PosZ = productHeight
+    pattern.PosZAdjustment = productHeight
     pattern.filmHeight = filmHeight
     yieldControl = False
 
     # TODO choose between rotation based or height based.
     while pattern.position < endCircleCount:
         # TODO make sure only one pattern is active at a time.
-        PosZ = pattern.rotationBased(start=0, stop=1, overlap=100)
-        PosZ = pattern.rotationBased(2, 4, 0)
-        PosZ = pattern.percentageBased(productHeight, 20, 80, -100)
+        a = pattern.rotationBased(startRotation=0, stopRotation=2, overlap=100)
+        b = pattern.rotationBased(2, 4, 0)
+        c = pattern.measurementBased(productHeight,4.01,2.0,-50)
+        d = pattern.percentageBased(productHeight, 80, 100, -100)
+
+        PosZ += pattern.PosZAdjustment
 
         if not PosZ > 0 + filmHeight:
             PosZ = 0 + filmHeight
@@ -89,6 +106,7 @@ def gen(n):
         if pattern.position >= rotations * fullCircle:
             rotations += 1
             print(f"Rotation {rotations}: PosZ = {PosZ:.2f}")
+           # print(f'Control: a{a}, b{b}, c{c}, d{d},')
 
         pattern.position += endCircleCount / pattern.n
         # print(rotations, PosZ)
