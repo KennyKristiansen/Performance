@@ -31,6 +31,7 @@ class wrappingPattern:
             self.PosZAdjustment = -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
             return(True)
 
+    #TODO
     def percentageBased(self, productHeight, start, stop, overlap):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
@@ -41,8 +42,7 @@ class wrappingPattern:
         # start = (-productHeight / 100) * start + productHeight
         # stop = (-productHeight / 100) * stop + productHeight
         FloatCompensation = 0.0001
-        if start + FloatCompensation >= self.position >= stop:
-            print(f' {start =} {self.position=} {stop =}')
+        if start + FloatCompensation >= self.PosZ >= stop:
             self.PosZAdjustment = -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
             return(True)
 
@@ -89,6 +89,7 @@ def gen(n):
         d = pattern.percentageBased(productHeight, 80, 100, -100)
 
         PosZ += pattern.PosZAdjustment
+        pattern.PosZ = PosZ
 
         if not PosZ > 0 + filmHeight:
             PosZ = 0 + filmHeight
