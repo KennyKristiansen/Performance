@@ -1,7 +1,6 @@
 import numpy as np
 from matplotlib import animation
 from matplotlib import pyplot as plt
-from regex import P
 
 fig = plt.figure()
 ax = fig.add_subplot(projection="3d")
@@ -15,20 +14,17 @@ class ExceptionOutOfRange(BaseException):
 
 class wrappingPattern:
     def __init__(self) -> None:
-        self.fullCircle = np.radians(360)
-        self.start: int = 1
-        self.stop: int = 1
         self.position: int = 1
         self.overlap: float = 1
         self.n: int = 1
         self.PosZ: int = 1
         self.filmHeight = 0
 
-    #TODO create more patternchoices, example cm based
+    # TODO create more pattern choices, example cm based
     def rotationBased(self, start, stop, overlap):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
-        self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight*2, 0.0))
+        self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight * 2, 0.0))
         fullCircle = np.radians(360)
         if stop * fullCircle >= self.position >= start * fullCircle:
             self.PosZ += -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
@@ -37,11 +33,15 @@ class wrappingPattern:
     def percentageBased(self, productHeight, start, stop, overlap):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
-        self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight*2, 0.0))
+        self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight * 2, 0.0))
         fullCircle = np.radians(360)
-        start = (-productHeight / 100) * start + productHeight
-        stop = (-productHeight / 100) * stop + productHeight
-        if start >= self.PosZ >= stop:
+        start = self.scale(start, (0, 100), (productHeight, 0.0))
+        stop = self.scale(stop, (0, 100), (productHeight, 0.0))
+
+        # start = (-productHeight / 100) * start + productHeight
+        # stop = (-productHeight / 100) * stop + productHeight
+        FloatCompensation = 0.0001
+        if start + FloatCompensation >= self.PosZ >= stop:
             self.PosZ += -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
         return self.PosZ
 
@@ -64,20 +64,27 @@ def gen(n):
     pattern.n = n
     pattern.PosZ = productHeight
     pattern.filmHeight = filmHeight
+    yieldControl = False
 
-    #TODO choose between rotation based or height based.
+    # TODO choose between rotation based or height based.
     while pattern.position < endCircleCount:
-        #TODO make sure only one pattern is active at a time.
+        # TODO make sure only one pattern is active at a time.
         PosZ = pattern.rotationBased(start=0, stop=1, overlap=100)
-        PosZ = pattern.rotationBased(2, 4, -100)
-        PosZ = pattern.percentageBased(productHeight, 35, 100, -100)
+        PosZ = pattern.rotationBased(2, 4, 0)
+        PosZ = pattern.percentageBased(productHeight, 20, 80, -100)
 
         if not PosZ > 0 + filmHeight:
             PosZ = 0 + filmHeight
         PosX = np.cos(pattern.position)
         PosY = np.sin(pattern.position)
-        yield np.array([PosX, PosY, PosZ])
-        yield np.array([PosX, PosY, PosZ - filmHeight])
+        if yieldControl:
+            yield np.array([PosX, PosY, PosZ])
+            yield np.array([PosX, PosY, PosZ - filmHeight])
+            yieldControl = False
+        else:
+            yield np.array([PosX, PosY, PosZ - filmHeight])
+            yield np.array([PosX, PosY, PosZ])
+            yieldControl = True
 
         if pattern.position >= rotations * fullCircle:
             rotations += 1
@@ -92,7 +99,7 @@ def update(num, data, line):
     line.set_3d_properties(data[2, :num])
 
 
-N = 500
+N = 1500
 
 data = np.array(list(gen(N))).T
 
