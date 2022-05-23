@@ -15,7 +15,6 @@ class ExceptionOutOfRange(BaseException):
 
 class wrappingPattern:
     def __init__(self) -> None:
-        self.fullCircle = np.radians(360)
         self.start: int = 1
         self.stop: int = 1
         self.position: int = 1
@@ -29,20 +28,20 @@ class wrappingPattern:
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
         self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight*2, 0.0))
-        fullCircle = np.radians(360)
-        if stop * fullCircle >= self.position >= start * fullCircle:
-            self.PosZ += -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
+        Circle = np.radians(360)
+        if stop * Circle >= self.position >= start * Circle:
+            self.PosZ += -self.overlap * (Circle * 10) / (self.n * Circle)
         return self.PosZ
 
     def percentageBased(self, productHeight, start, stop, overlap):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
         self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight*2, 0.0))
-        fullCircle = np.radians(360)
+        Circle = np.radians(360)
         start = (-productHeight / 100) * start + productHeight
         stop = (-productHeight / 100) * stop + productHeight
         if start >= self.PosZ >= stop:
-            self.PosZ += -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
+            self.PosZ += -self.overlap * (Circle * 10) / (self.n * Circle)
         return self.PosZ
 
     def scale(self, val, src, dst):
@@ -53,11 +52,11 @@ class wrappingPattern:
 
 
 def gen(n):
-    fullCircle = np.radians(360)
+    Circle = np.radians(360)
     productHeight = 5
     PosZ = productHeight
     rotations = 0
-    endCircleCount = 10 * fullCircle
+    endCircleCount = 10 * Circle
     filmHeight = 0.5
 
     pattern = wrappingPattern()
@@ -79,7 +78,7 @@ def gen(n):
         yield np.array([PosX, PosY, PosZ])
         yield np.array([PosX, PosY, PosZ - filmHeight])
 
-        if pattern.position >= rotations * fullCircle:
+        if pattern.position >= rotations * Circle:
             rotations += 1
             print(f"Rotation {rotations}: PosZ = {PosZ:.2f}")
 
