@@ -28,10 +28,12 @@ class wrappingPattern:
         self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight * 2, 0))
         fullCircle = np.radians(360)
         if stopRotation * fullCircle >= self.position >= startRotation * fullCircle:
-            self.PosZAdjustment = -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
-            return(True)
+            self.PosZAdjustment = (
+                -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
+            )
+            return True
 
-    #TODO
+    # TODO
     def percentageBased(self, productHeight, start, stop, overlap):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
@@ -43,11 +45,12 @@ class wrappingPattern:
         # stop = (-productHeight / 100) * stop + productHeight
         FloatCompensation = 0.0001
         if start + FloatCompensation >= self.PosZ >= stop:
-            self.PosZAdjustment = -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
-            return(True)
+            self.PosZAdjustment = (
+                -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
+            )
+            return True
 
-
-    #TODO wrongly implemented, does not account for product height
+    # TODO wrongly implemented, does not account for product height
     def measurementBased(self, productHeight, start, stop, overlap):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
@@ -55,9 +58,10 @@ class wrappingPattern:
         fullCircle = np.radians(360)
 
         if productHeight >= start >= self.PosZ >= stop:
-            self.PosZAdjustment = -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
-            return(True)
-
+            self.PosZAdjustment = (
+                -self.overlap * (fullCircle * 10) / (self.n * fullCircle)
+            )
+            return True
 
     def scale(self, val, src, dst):
         """
@@ -85,13 +89,13 @@ def gen(n):
         # TODO make sure only one pattern is active at a time.
         a = pattern.rotationBased(startRotation=0, stopRotation=1, overlap=100)
         b = pattern.rotationBased(1, 4, 0)
-        c = pattern.measurementBased(productHeight,350,200,-50)
+        c = pattern.measurementBased(productHeight, 350, 200, -50)
         d = pattern.percentageBased(productHeight, 60, 100, -100)
 
         if not PosZ > 0 + filmHeight:
             PosZ = 0 + filmHeight
-        PosX = np.cos(pattern.position)*200
-        PosY = np.sin(pattern.position)*200
+        PosX = np.cos(pattern.position) * 200
+        PosY = np.sin(pattern.position) * 200
         if yieldControl:
             yield np.array([PosX, PosY, PosZ])
             yield np.array([PosX, PosY, PosZ - filmHeight])
@@ -104,7 +108,7 @@ def gen(n):
         if pattern.position >= rotations * Circle:
             rotations += 1
             print(f"Rotation {rotations}: PosZ = {PosZ:.2f}")
-            print(f'Control: a{a}, b{b}, c{c}, d{d},')
+            print(f"Control: a{a}, b{b}, c{c}, d{d},")
 
         PosZ += pattern.PosZAdjustment
         pattern.PosZ = PosZ
