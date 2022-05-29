@@ -1,3 +1,5 @@
+from typing import Any
+
 import numpy as np
 from matplotlib import animation
 from matplotlib import pyplot as plt
@@ -7,7 +9,7 @@ ax = fig.add_subplot(projection="3d")
 
 
 class ExceptionOutOfRange(BaseException):
-    def __init__(self, message, base_message=None, *args):
+    def __init__(self, message: str, base_message: None = None):
         self.message = message
         self.base_message = base_message
 
@@ -22,7 +24,7 @@ class wrappingPattern:
         self.filmHeight = 0
 
     # TODO create more pattern choices, example cm based
-    def rotationBased(self, startRotation, stopRotation, overlap):
+    def rotationBased(self, startRotation: int, stopRotation: int, overlap: float):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
         self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight * 2, 0))
@@ -34,7 +36,9 @@ class wrappingPattern:
             return True
 
     # TODO
-    def percentageBased(self, productHeight, start, stop, overlap):
+    def percentageBased(
+        self, productHeight: float, start: float, stop: float, overlap: float
+    ):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
         self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight * 2, 0.0))
@@ -51,7 +55,9 @@ class wrappingPattern:
             return True
 
     # TODO wrongly implemented, does not account for product height
-    def measurementBased(self, productHeight, start, stop, overlap):
+    def measurementBased(
+        self, productHeight: float, start: float, stop: float, overlap: int
+    ):
         if overlap not in range(-101, 101):
             raise ExceptionOutOfRange("Overlap out of range.")
         self.overlap = self.scale(overlap, (-100, 100), (self.filmHeight * 2, 0.0))
@@ -63,17 +69,19 @@ class wrappingPattern:
             )
             return True
 
-    def scale(self, val, src, dst):
+    def scale(
+        self, val: float, src: tuple[int, int], dst: tuple[float, float]
+    ) -> float:
         """
         Scale the given value from the scale of src to the scale of dst.
         """
         return ((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0]
 
 
-def gen(n):
+def gen(n: int) -> Any:
     Circle = np.radians(360)
     productHeight = 500
-    PosZ = productHeight
+    PosZ: float = productHeight
     rotations = 0
     endCircleCount = 10 * Circle
     filmHeight = 50
@@ -94,8 +102,8 @@ def gen(n):
 
         if not PosZ > 0 + filmHeight:
             PosZ = 0 + filmHeight
-        PosX = np.cos(pattern.position) * 200
-        PosY = np.sin(pattern.position) * 200
+        PosX: float = np.cos(pattern.position) * 200
+        PosY: float = np.sin(pattern.position) * 200
         if yieldControl:
             yield np.array([PosX, PosY, PosZ])
             yield np.array([PosX, PosY, PosZ - filmHeight])
@@ -117,14 +125,14 @@ def gen(n):
         # print(rotations, PosZ)
 
 
-def update(num, data, line):
+def update(num: int, data: Any, line: Any) -> None:
     line.set_data(data[:2, :num])
     line.set_3d_properties(data[2, :num])
 
 
 N = 1500
 
-data = np.array(list(gen(N))).T
+data: Any = np.array(list(gen(N))).T  # type: ignore
 
 (line,) = ax.plot(data[0, 0:1], data[1, 0:1], data[2, 0:1], lw=1, color="b")
 
@@ -138,8 +146,8 @@ ax.set_ylabel("Y")
 ax.set_zlim3d([0, 500])
 ax.set_zlabel("Z")
 
-ani = animation.FuncAnimation(
-    fig, update, frames=N * 2, fargs=(data, line), interval=0.2, blit=False
+ani: animation.FuncAnimation[Any] = animation.FuncAnimation(
+    fig, update, frames=N * 2, fargs=(data, line), interval=0.2, blit=False  # type: ignore
 )
 # ani.save('matplot003.gif', writer='imagemagick', fps=60)
 plt.show()

@@ -1,5 +1,6 @@
 {
     "jupyter.jupyterServerType": "local",
+    "python.analysis.typeCheckingMode": "strict",
     "python.testing.unittestArgs": [
         "-v",
         "-s",
@@ -11,7 +12,7 @@
     "python.testing.unittestEnabled": true,
     "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
     "editor.codeActionsOnSave": {
-    "source.organizeImports": true,
+        "source.organizeImports": true,
     },
     "python.linting.enabled": true,
     "python.formatting.provider": "black",
